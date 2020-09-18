@@ -1,0 +1,27 @@
+/*Reset Margin and Padding*/
+* {
+	margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    transition: background-color .5s;
+    background-color: #FDFFFC;
+    display: flex;
+    min-height: 100vh !important;
+    flex-direction: column;
+  }
+main {
+    flex: 1 0 auto;
+  }
+
+header, main, footer {
+    padding-left: 300px;
+    }
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+      }
+    }
