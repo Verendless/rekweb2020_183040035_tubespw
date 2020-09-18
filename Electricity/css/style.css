@@ -528,6 +528,11 @@ input:not([type="submit"]):valid {
     color: #202121;
 }
 
+.sort_brand_backend{
+    text-decoration: none;
+    color: #202121 !important;
+}
+
 .page-footer {
     background-color: #F5F5F5 !important;
     color: #202121;

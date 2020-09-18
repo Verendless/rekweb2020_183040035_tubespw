@@ -43,7 +43,7 @@ $result = mysqli_query(koneksi(), $brand);
               <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
               <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
               <li><a id="search-button"><i class="fa fa-search"></i></a></li>
-              <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
+              <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
             </div>
           </ul>
         </div>
@@ -123,22 +123,22 @@ $result = mysqli_query(koneksi(), $brand);
           <tr>
             <th>Gambar</th>
             <th><a class="sort_brand_backend" id="brand" data-order="desc" href="#">Brand</a></th>
-            <th><a class="sort_brand_backend" id="founded" data-order="desc" href="#">Found</a></th>
+            <th><a class="sort_brand_backend" id="founded" data-order="desc" href="#">Founded</a></th>
             <th><a class="sort_brand_backend" id="base" data-order="desc" href="#">Base</a></th>
             <th><a class="sort_brand_backend" id="area_served" data-order="desc" href="#">Area Served</a></th>
             <th><a class="sort_brand_backend" id="revenue" data-order="desc" href="#">Revenue</a></th>
             <th>Aksi</th>
           </tr>
-          <?php foreach ($result as $brand): ?>
+          <?php foreach ($result as $brands): ?>
             <tr>
-              <td><img src="assets/img/<?= $brand['image']  ?>"></td>
-              <td><?= $brand['nama']  ?></td>
-              <td><?= $brand['founded']  ?></td>
-              <td><?= $brand['base']  ?></td>
-              <td><?= $brand['area_served']  ?></td>
-              <td>$<?= $brand['revenue']  ?> Billion</td>
-              <td><a href="edit-brand.php?id=<?=$brand['nama'] ?>" class="edit">Edit</a> |
-                <a href="delete-brand.php?id=<?=$brand['nama']?>" onclick="return confirm('Anda Yakin Menghapus Data Ini?')" class="delete">Delete</a></td>
+              <td><img src="assets/img/<?= $brands['image']  ?>"></td>
+              <td><?= $brands['brand']  ?></td>
+              <td><?= $brands['founded']  ?></td>
+              <td><?= $brands['base']  ?></td>
+              <td><?= $brands['area_served']  ?></td>
+              <td>$<?= $brands['revenue']  ?> Billion</td>
+              <td><a href="edit-brand.php?id=<?=$brands['brand'] ?>" class="edit">Edit</a> |
+                <a href="delete-brand.php?id=<?=$brands['brand']?>" onclick="return confirm('Anda Yakin Menghapus Data Ini?')" class="delete">Delete</a></td>
             </tr>
           <?php endforeach ?>
         </table>

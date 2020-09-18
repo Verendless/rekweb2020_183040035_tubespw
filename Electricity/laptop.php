@@ -72,11 +72,11 @@ if (isset($_POST['cari'])) {
                             <?php if ($log == true):?>
                                 <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
                             <?php endif ?>
-                            <?php if($user == true): ?>
-                                <li class="link"><a href="logout.php" ><i class="material-icons prefix">directions_run</i></a></li>
-                            <?php endif ?>
                             <?php if ($dashboard == true): ?>
                                 <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
+                            <?php endif ?>
+                            <?php if($user == true): ?>
+                                <li class="link"><a href="logout.php" ><i class="material-icons prefix">directions_run</i></a></li>
                             <?php endif ?>
                         </div>
                     </ul>
@@ -87,22 +87,20 @@ if (isset($_POST['cari'])) {
 </header>
 <!-- Navbar END -->
 <!-- Sidenav -->
-  <ul id="mobile-demo" class="sidenav">
-      <li><a href="#!">should be a search form</a></li>
-      <li><div class="divider"></div></li>
-      <li><a class="subheader">Menu</a></li>
-      <?php if ($log == true):?>
-          <li><a class="waves-effect" href="loginUser.php"><i class="material-icons">people</i>Login/Register</a></li>
-      <?php endif ?>
-      <?php if ($dashboard == true): ?>
-          <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i>Dashboard</a></li>
-      <?php endif ?>
-      <li><a class="waves-effect" href="laptop.php"><i class="material-icons">laptop</i>Laptop</a></li>
-      <li><a class="waves-effect" href="brand.php"><i class="material-icons">donut_small</i>Brands</a></li>
-      <?php if($user == true): ?>
-          <li><a class="waves-effect" href="logout.php"><i class="material-icons">keyboard_arrow_left</i>Logout</a></li>
-      <?php endif ?>
-  </ul>
+<ul id="mobile-demo" class="sidenav">
+    <li><a class="subheader">Menu</a></li>
+    <?php if ($log == true):?>
+    <li><a class="waves-effect" href="loginUser.php"><i class="material-icons">people</i>Login/Register</a></li>
+    <?php endif ?>
+    <?php if ($dashboard == true): ?>
+        <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i>Dashboard</a></li>
+    <?php endif ?>
+    <li><a class="waves-effect" href="laptop.php"><i class="material-icons">laptop</i>Laptop</a></li>
+    <li><a class="waves-effect" href="brand.php"><i class="material-icons">donut_small</i>Brands</a></li>
+    <?php if($user == true): ?>
+    <li><a class="waves-effect" href="logout.php"><i class="material-icons">keyboard_arrow_left</i>Logout</a></li>
+    <?php endif ?>
+</ul>
   <!-- Sidenav END -->
 <!-- Sort Bar -->
 <main>
@@ -115,7 +113,7 @@ if (isset($_POST['cari'])) {
           <div class="box">
             <ul>
               <li>Sort By :</li>
-              <li><a class="sort_laptop" id="nama_laptop" data-order="desc" href="#">Nama</a></li>
+              <li><a class="sort_laptop" id="nama_laptop" data-order="desc" href="#">Name</a></li>
             </ul>
           </div>
         </div>

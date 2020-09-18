@@ -196,12 +196,13 @@
 			return false;
 		}
 
-		$queryTambah = "INSERT INTO laptop VALUES (NULL, '$nama','$jenis', '$prosesor', '$vga', '$ram', '$storage', '$dimensi', $harga, '$gambar', '$detail', '$merek', '0')";
+		$queryTambah = "INSERT INTO laptop VALUES (NULL, '$nama','$jenis', '$prosesor', '$vga', '$ram', '$storage', '$dimensi','$merek', $harga, '$gambar', '$detail', '0')";
 
 		mysqli_query($conn, $queryTambah);
 
 		return mysqli_affected_rows($conn);
 	}
+
 
 // add brand
 
@@ -209,7 +210,7 @@
 	{
 		$conn = koneksi();
 
-		$nama = htmlspecialchars($data['nama']);
+		$nama = htmlspecialchars($data['brand']);
 		$founded = htmlspecialchars($data['founded']);
 		$base = htmlspecialchars($data['base']);
 		$area_served = htmlspecialchars($data['area_served']);
@@ -221,7 +222,7 @@
 			return false;
 		}
 
-		$queryTambah = "INSERT INTO brand VALUES ($nama', '$founded', '$base', '$area_served', $revenue, '$gambar', '0')";
+		$queryTambah = "INSERT INTO brand VALUES ('$nama', '$founded', '$base', '$area_served', $revenue, '$gambar', '0')";
 
 		mysqli_query($conn, $queryTambah);
 

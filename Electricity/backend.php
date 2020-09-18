@@ -25,16 +25,9 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <div class="menu">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <form class="search-form" method="get">
-              <div class="input-field search">
-                <input id="search" type="search" placeholder="Search" autofocus autocomplete="off" />
-                <label class="label-icon" for="search"><a class="close"><i class="fa fa-times"></i></a></label>
-              </div>
-            </form>
             <div class="menu">
               <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
               <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
-              <li><a id="search-button"><i class="fa fa-search"></i></a></li>
               <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
             </div>
           </ul>
@@ -55,15 +48,6 @@
       <a href="#name"><span class="white-text name">Hadi Sutarma</span></a>
       <a href="#email"><span class="white-text email">hadisutarma12@gmail.com</span></a>
     </div>
-  </li>
-  <li>
-      <form>
-        <div class="input-field sidesearch">
-          <input id="search" type="search" autocomplete="off" placeholder="Search">
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons fix">close</i>
-        </div>
-      </form>
   </li>
   <li><a class="subheader">Menu</a></li>
     <li><a class="waves-effect" href="backend.php"><i class="material-icons">dashboard</i>Dashboars</a></li>

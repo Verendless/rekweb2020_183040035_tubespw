@@ -6,18 +6,28 @@ $brand = query("SELECT * FROM brand");
 if (isset($_POST['cari'])) {
   $laptop = cari($_POST['keyword']);
 }
+
 if (!isset($_SESSION['login'])) {
   $log = true;
 } else {
   $log = false;
 }
+
+if (isset($_SESSION['username']))
+{
+  $user = true;
+} else {
+  $user = false;
+}
+
 if (isset($_SESSION['admin'])) {
   if ($_SESSION['admin'] == 1) {
-  $dashboard = true;
-} else {
-  $dashboard = false;
+      $dashboard = true;
+  } else {
+      $dashboard = false;
+  }
 }
-} else {
+else {
   $dashboard = false;
 }
  ?>
@@ -40,42 +50,45 @@ if (isset($_SESSION['admin'])) {
 </head>
 <body>
   <!-- Navbar -->
-<header>
-  <nav class="navbar-fixed navbar">
-    <div class="nav-wrapper">
-      <div class="container">
-        <a href="index.php" class="brand-logo">ELECTRICITY</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <div class="menu">
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <form class="search-form" method="get">
-              <div class="input-field search">
-                <input id="search" type="search" placeholder="Search" autofocus autocomplete="off" />
-                <label class="label-icon" for="search"><a class="close"><i class="fa fa-times"></i></a></label>
-              </div>
-            </form>
-            <div class="menu">
-              <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
-              <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
-              <li><a id="search-button"><i class="fa fa-search"></i></a></li>
-              <?php if ($log == true): ?>
-              <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>    
-              <?php endif ?>
-              <?php if ($dashboard == true): ?>
-                <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
-              <?php endif ?>
+  <header>
+    <nav class="navbar-fixed navbar">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="index.php" class="brand-logo">ELECTRICITY</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <div class="menu">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <form class="search-form" method="get">
+                            <div class="input-field search">
+                                <input id="search" type="search" placeholder="Search" autofocus autocomplete="off" />
+                                <label class="label-icon" for="search"><a class="close"><i class="fa fa-times"></i></a></label>
+                            </div>
+                        </form>
+                        <div class="menu">
+                            <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
+                            <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
+                            <li><a id="search-button"><i class="fa fa-search"></i></a></li>
+                            <?php if ($log == true):?>
+                                <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
+                            <?php endif ?>
+                            <?php if ($dashboard == true): ?>
+                                <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
+                            <?php endif ?>
+                            <?php if($user == true): ?>
+                                <li class="link"><a href="logout.php" ><i class="material-icons prefix">directions_run</i></a></li>
+                            <?php endif ?>
+                        </div>
+                    </ul>
+                </div>
             </div>
-          </ul>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </header>
 <!-- Navbar END -->
 <!-- Sidenav -->
 <ul id="mobile-demo" class="sidenav">
   <li>
-    <form>
+    <form method="get">
       <div class="input-field sidesearch">
         <input id="search" type="search" autocomplete="off" placeholder="Search">
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -102,8 +115,6 @@ if (isset($_SESSION['admin'])) {
             <ul>
               <li>Sort By :</li>
               <li><a class="sort_brand" id="brand" data-order="desc" href="#">Name</a></li>
-              <li><a class="sort_brand" id="founded" data-order="desc" href="#">Founded</a></li>
-              <li><a class="sort_brand" id="revenue" data-order="desc" href="#">Revenue</a></li>
             </ul>
           </div>
         </div>
@@ -113,7 +124,7 @@ if (isset($_SESSION['admin'])) {
 <!-- Sort Bar END -->
 <!-- Main -->
 <main>
-  <!-- Item -->
+<!-- Item -->
 <div class="products-item">
   <div class="container">
     <div class="row">
@@ -142,38 +153,50 @@ if (isset($_SESSION['admin'])) {
 <!-- Item END -->  
 </main>
 <!-- Main END -->
-<!-- Footer -->
 <footer class="page-footer">
-  <div class="container page-footer-index">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5>Contact</h5>
-        <p>Email : Hadisutarma12@gmail.com</p>
-      </div>
-      <div class="col l4 offset-l2 s12">
-        <h5>Menu</h5>
-        <ul>
-          <li><a href="laptop.php">Laptop</a></li>
-          <li><a href="brand.php">Brand</a></li>
-        </ul>
-      </div>
+    <div class="container page-footer-index">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5>Contact</h5>
+                <p>Email : Hadisutarma12@gmail.com</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5>Menu</h5>
+                <ul>
+                    <li><a href="laptop.php">Laptop</a></li>
+                    <li><a href="brand.php">Brand</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-    © 2019 Hadi Sutarma
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 Hadi Sutarma
+        </div>
     </div>
-  </div>
 </footer>
 <!-- Footer END -->
 
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script src="js/script.js"></script>
   <script>
   // Live Search Brand Using Ajax
   var keyword = document.getElementById("search");
   var container = document.getElementById("box-search");
+
+  $(document).ready(function(){
+    $('#search-button').click(function(){
+      $('.menu-item').addClass('hide-item')
+      $('.search-form').addClass('active')
+      $('.close').addClass('active');
+    })
+    $('.close').click(function(){
+      $('.menu-item').removeClass('hide-item')
+      $('.search-form').removeClass('active')
+      $('.close').removeClass('active');
+    })
+    });
 
   keyword.addEventListener('keyup', function() {
     var xhr = new XMLHttpRequest();

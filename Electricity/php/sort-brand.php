@@ -23,8 +23,6 @@ $output .= '
             <ul>
               <li>Sort By :</li>
               <li><a class="sort_brand" id="brand" data-order="'.$order.'" href="#">Name</a></li>
-              <li><a class="sort_brand" id="founded" data-order="'.$order.'" href="#">Founded</a></li>
-              <li><a class="sort_brand" id="revenue" data-order="'.$order.'" href="#">Revenue</a></li>
             </ul>
           </div>
         </div>

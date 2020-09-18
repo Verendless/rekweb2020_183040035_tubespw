@@ -42,7 +42,7 @@ $user = query("SELECT * FROM user");
               <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
               <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
               <li><a id="search-button"><i class="fa fa-search"></i></a></li>
-              <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
+              <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
             </div>
           </ul>
         </div>
@@ -66,7 +66,7 @@ $user = query("SELECT * FROM user");
     <li>
       <form method="get">
         <div class="input-field sidesearch">
-          <input id="search_user_mobile" type="search" autocomplete="off" placeholder="Search">
+          <input id="search_user" type="search" autocomplete="off" placeholder="Search">
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons fix">close</i>
         </div>
@@ -162,7 +162,7 @@ $user = query("SELECT * FROM user");
 </footer>
 <!-- Footer END -->
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script src="js/script.js"></script>
 <script>
 
@@ -180,7 +180,7 @@ keyword_user.addEventListener('keyup', function() {
     }
   }
 
-  xhr.open('POST', '../php/user_search.php?keyword=' + keyword_user.value, true);
+  xhr.open('POST', 'php/user_search.php?keyword=' + keyword_user.value, true);
   xhr.send();
 });
 </script>

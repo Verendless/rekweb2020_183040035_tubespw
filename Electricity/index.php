@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'php/functions.php';
+
 if (!isset($_SESSION['login'])) {
     $log = true;
 } else {
@@ -24,6 +25,7 @@ if (isset($_SESSION['admin'])) {
 else {
     $dashboard = false;
 }
+
 $laptop = query("SELECT * FROM laptop");
 $brand = query("SELECT * FROM brand");
 ?>
@@ -55,16 +57,16 @@ $brand = query("SELECT * FROM brand");
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <div class="menu">
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <form class="search-form" method="get">
+                        <!-- <form class="search-form" method="get">
                             <div class="input-field search">
                                 <input id="search" type="search" placeholder="Search" autofocus autocomplete="off" />
                                 <label class="label-icon" for="search"><a class="close"><i class="fa fa-times"></i></a></label>
                             </div>
-                        </form>
+                        </form> -->
                         <div class="menu">
                             <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
                             <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
-                            <li><a id="search-button"><i class="fa fa-search"></i></a></li>
+                            <!-- <li><a id="search-button"><i class="fa fa-search"></i></a></li> -->
                             <?php if ($log == true):?>
                                 <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
                             <?php endif ?>
@@ -85,8 +87,6 @@ $brand = query("SELECT * FROM brand");
 <!-- Navbar END -->
 <!-- Sidenav -->
 <ul id="mobile-demo" class="sidenav">
-    <li><a href="#!">should be a search form</a></li>
-    <li><div class="divider"></div></li>
     <li><a class="subheader">Menu</a></li>
     <?php if ($log == true):?>
     <li><a class="waves-effect" href="loginUser.php"><i class="material-icons">people</i>Login/Register</a></li>
@@ -103,20 +103,20 @@ $brand = query("SELECT * FROM brand");
 <!-- Sidenav END -->
 <!-- Main -->
 <main>
-    <!-- Slider -->
-    <div class="slider">
-        <ul class="slides">
-            <li>
-                <img src="assets/img/2.jpg">
-            </li>
-            <li>
-                <img src="assets/img/1.jpg">
-            </li>
-        </ul>
-    </div>
-    <!-- Slider END -->
-    <!-- Featured -->
-    <div class="featured">
+<!-- Slider -->
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="assets/img/2.jpg">
+        </li>
+        <li>
+            <img src="assets/img/1.jpg">
+        </li>
+    </ul>
+</div>
+<!-- Slider END -->
+<!-- Featured -->
+<div class="featured">
         <div class="container">
             <h5 class="laptop">Featured Laptops</h5>
             <div class="row">
@@ -142,44 +142,59 @@ $brand = query("SELECT * FROM brand");
                     <?php $i++ ?>
                 <?php endforeach ?>
             </div>
-            <h5 class="tv">Featured Brand</h5>
+            <h5 class="laptop">Featured Brand</h5>
             <div class="row">
-                <div class="col s12 m3">
-                    <div class="featured-item">
-                        <img src="assets/img/msi.png" class="responsive-img">
-                        <p class="center">MSI GL63 8SC - 013ID</p>
-                        <p class="center">Gaming Laptop</p>
-                        <p class="center"><button class="learn-more">Learn More</button></p>
-                    </div>
-                </div>
-                <div class="col s12 m3">
-                    <div class="featured-item">
-                        <img src="assets/img/msi.png" class="responsive-img">
-                        <p class="center">MSI GL63 8SC - 013ID</p>
-                        <p class="center">Gaming Laptop</p>
-                        <p class="center"><button class="learn-more">Learn More</button></p>
-                    </div>
-                </div>
-                <div class="col s12 m3">
-                    <div class="featured-item">
-                        <img src="assets/img/msi.png" class="responsive-img">
-                        <p class="center">MSI GL63 8SC - 013ID</p>
-                        <p class="center">Gaming Laptop</p>
-                        <p class="center"><button class="learn-more">Learn More</button></p>
-                    </div>
-                </div>
-                <div class="col s12 m3">
-                    <div class="featured-item">
-                        <img src="assets/img/msi.png" class="responsive-img">
-                        <p class="center">MSI GL63 8SC - 013ID</p>
-                        <p class="center">Gaming Laptop</p>
-                        <p class="center"><button class="learn-more">Learn More</button></p>
-                    </div>
-                </div>
+                <?php $i = 1 ?>
+                <?php foreach ($brand as $brands): ?>
+                    <?php if ($brands['featured'] == 1): ?>
+                        <?php if ($i == 3): ?>
+                            <?php break ?>
+                        <?php endif ?>
+                        <div class="col s12 m3 l3">
+                            <div class="featured-item">
+                                <div class="item-box">
+                                    <img src="assets/img/<?= $brands['image'] ?>" class="responsive-img">
+                                    <div class="box-name">
+                                        <p class="center"><?= $brands['brand'] ?></p>
+                                    </div>
+                                </div>
+                                <p class="center"><a class= "learn-more" href="detail_brand.php?id=<?=$brands['brand'] ?>">Learn More</a></p>
+                            </div>
+                        </div>
+                    <?php endif ?>
+                    <?php $i++ ?>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
-    <!-- Featured END -->
+<!-- Featured END -->
+  <div id="content" class="container">
+    <h3 align="center">Discover More</h1>
+    <div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-image">
+          <img src="assets/img/1.jpg" class="responsive-img">
+          <span class="card-title">Laptop</span>
+        </div>
+        <div class="card-action">
+          <a href="backend-laptop.php">Laptop List</a>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-image">
+          <img src="assets/img/2.jpg" class="responsive-img">
+          <span class="card-title">Brand</span>
+        </div>
+        <div class="card-action">
+          <a href="backend-brand.php">Brand List</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 <!-- Main END -->
 <footer class="page-footer">
@@ -218,18 +233,18 @@ $brand = query("SELECT * FROM brand");
         $('.sidenav').sidenav();
     });
 
-    $(document).ready(function(){
-        $('#search-button').click(function(){
-            $('.menu-item').addClass('hide-item')
-            $('.search-form').addClass('active')
-            $('.close').addClass('active');
-        })
-        $('.close').click(function(){
-            $('.menu-item').removeClass('hide-item')
-            $('.search-form').removeClass('active')
-            $('.close').removeClass('active');
-        })
-    });
+    // $(document).ready(function(){
+    //     $('#search-button').click(function(){
+    //         $('.menu-item').addClass('hide-item')
+    //         $('.search-form').addClass('active')
+    //         $('.close').addClass('active');
+    //     })
+    //     $('.close').click(function(){
+    //         $('.menu-item').removeClass('hide-item')
+    //         $('.search-form').removeClass('active')
+    //         $('.close').removeClass('active');
+    //     })
+    // });
 </script>
 </body>
 </html>

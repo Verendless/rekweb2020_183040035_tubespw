@@ -152,7 +152,7 @@ if(isset($_POST['edit']))
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6 m6 l6">
-            <input value="<?=$brand['base'] ?>" name="base" id="prosesor" type="text" required>
+            <input value="<?=$brand['base'] ?>" name="base" id="base" type="text" required>
             <label class="active" for="prosesor" >Base</label>
           </div>
           <div class="input-field col s6 m6 l6">

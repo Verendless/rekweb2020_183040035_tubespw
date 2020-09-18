@@ -3,18 +3,28 @@ session_start();
 require 'php/functions.php';
 $id = $_GET['id'];
 $detail = query("SELECT * FROM laptop WHERE id_laptop = $id")[0];
+
 if (!isset($_SESSION['login'])) {
   $log = true;
 } else {
   $log = false;
 }
+
+if (isset($_SESSION['username']))
+{
+  $user = true;
+} else {
+  $user = false;
+}
+
 if (isset($_SESSION['admin'])) {
   if ($_SESSION['admin'] == 1) {
-  $dashboard = true;
-} else {
-  $dashboard = false;
+      $dashboard = true;
+  } else {
+      $dashboard = false;
+  }
 }
-} else {
+else {
   $dashboard = false;
 }
  ?>
@@ -38,50 +48,56 @@ if (isset($_SESSION['admin'])) {
 <body>
 <!-- Navbar Start -->
 <header>
-  <nav class="navbar-fixed navbar">
-    <div class="nav-wrapper">
-      <div class="container">
-        <a href="index.php" class="brand-logo">ELECTRICITY</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <div class="menu">
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <form class="search-form" method="get">
-              <div class="input-field search">
-                <input id="search" type="search" placeholder="Search" autofocus autocomplete="off" />
-                <label class="label-icon" for="search"><a class="close"><i class="fa fa-times"></i></a></label>
-              </div>
-            </form>
-            <div class="menu">
-              <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
-              <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
-              <li><a id="search-button"><i class="fa fa-search"></i></a></li>
-              <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
+    <nav class="navbar-fixed navbar">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="index.php" class="brand-logo">ELECTRICITY</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <div class="menu">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <!-- <form class="search-form" method="get">
+                            <div class="input-field search">
+                                <input id="search" type="search" placeholder="Search" autofocus autocomplete="off" />
+                                <label class="label-icon" for="search"><a class="close"><i class="fa fa-times"></i></a></label>
+                            </div>
+                        </form> -->
+                        <div class="menu">
+                            <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
+                            <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
+                            <!-- <li><a id="search-button"><i class="fa fa-search"></i></a></li> -->
+                            <?php if ($log == true):?>
+                                <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
+                            <?php endif ?>
+                            <?php if ($dashboard == true): ?>
+                                <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
+                            <?php endif ?>
+                            <?php if($user == true): ?>
+                                <li class="link"><a href="logout.php" ><i class="material-icons prefix">directions_run</i></a></li>
+                            <?php endif ?>
+
+                        </div>
+                    </ul>
+                </div>
             </div>
-          </ul>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </header>
 <!-- Navbar END -->
 <!-- Sidenav -->
-<!-- <ul id="mobile-demo" class="sidenav">
-  <li>
-    <form>
-      <div class="input-field sidesearch">
-        <input id="search" type="search" autocomplete="off" placeholder="Search">
-        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        <i class="material-icons fix">close</i>
-      </div>
-    </form>
-  </li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Menu</a></li>
-  <li><a class="waves-effect" href="laptop.php"><i class="material-icons">laptop</i>Laptop</a></li>
-  <li><a class="waves-effect" href="brand.php"><i class="material-icons">widgets</i>Brands</a></li>
-  <li><a class="waves-effect" href="loginUser.php"><i class="material-icons">people</i>Login/Register</a></li>
-  <li><a class="waves-effect" href="logout.php"><i class="material-icons">keyboard_arrow_left</i>Logout</a></li>
-</ul> -->
+<ul id="mobile-demo" class="sidenav">
+    <li><a class="subheader">Menu</a></li>
+    <?php if ($log == true):?>
+    <li><a class="waves-effect" href="loginUser.php"><i class="material-icons">people</i>Login/Register</a></li>
+    <?php endif ?>
+    <?php if ($dashboard == true): ?>
+        <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i>Dashboard</a></li>
+    <?php endif ?>
+    <li><a class="waves-effect" href="laptop.php"><i class="material-icons">laptop</i>Laptop</a></li>
+    <li><a class="waves-effect" href="brand.php"><i class="material-icons">donut_small</i>Brands</a></li>
+    <?php if($user == true): ?>
+    <li><a class="waves-effect" href="logout.php"><i class="material-icons">keyboard_arrow_left</i>Logout</a></li>
+    <?php endif ?>
+</ul>
 <!-- Sidenav END -->
 <!-- Detail -->
 <main>

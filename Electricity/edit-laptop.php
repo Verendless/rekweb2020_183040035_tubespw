@@ -2,7 +2,7 @@
 
 require 'php/functions.php';
 $id = $_GET['id'];
-$notebook = query("SELECT * FROM laptop_new WHERE id_laptop = $id")[0];
+$notebook = query("SELECT * FROM laptop WHERE id_laptop = $id")[0];
 if(isset($_POST['edit']))
   {
     if (editLaptop($_POST) > 0) {

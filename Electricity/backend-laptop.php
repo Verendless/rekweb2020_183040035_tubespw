@@ -43,7 +43,7 @@ $result = mysqli_query(koneksi(), $laptop);
               <li class="link"><a class="menu-item"href="laptop.php">LAPTOP</a></li>
               <li class="link"><a class="menu-item" href="brand.php">BRANDS</a></li>
               <li><a id="search-button"><i class="fa fa-search"></i></a></li>
-              <li class="link"><a href="loginUser.php" ><i class="material-icons prefix">account_circle</i></a></li>
+              <li class="link"><a href="backend.php" ><i class="material-icons prefix">dashboard</i></a></li>
             </div>
           </ul>
         </div>

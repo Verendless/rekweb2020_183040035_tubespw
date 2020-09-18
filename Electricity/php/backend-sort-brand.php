@@ -23,18 +23,18 @@ $output .= '
             <th>Aksi</th>
           </tr>
           ';
-foreach ($result as $brand) 
+foreach ($result as $brands) 
 {
 	$output .= '
             <tr>
-              <td><img src="assets/img/' . $brand["image"] .'"></td>
-              <td>' . $brand['brand'] . '</td>
-              <td>' . $brand['founded'] . '</td>
-              <td>' . $brand['base'] . '</td>
-              <td>' . $brand['area_served'] . '</td>
-              <td>$' . $brand['revenue'] . ' Billion</td>
-              <td><a href="edit-brand.php?id=' . $brand['brand'] . '" class="edit">Edit</a> | 
-                <a href="delete-brand.php?id=' . $brand['brand'] . '" onclick="return confirm("Anda Yakin Menghapus Data Ini?")" class="delete">Delete</a></td>
+              <td><img src="assets/img/' . $brands["image"] .'"></td>
+              <td>' . $brands['brand'] . '</td>
+              <td>' . $brands['founded'] . '</td>
+              <td>' . $brands['base'] . '</td>
+              <td>' . $brands['area_served'] . '</td>
+              <td>$' . $brands['revenue'] . ' Billion</td>
+              <td><a href="edit-brand.php?id=' . $brands['brand'] . '" class="edit">Edit</a> | 
+                <a href="delete-brand.php?id=' . $brands['brand'] . '" onclick="return confirm("Anda Yakin Menghapus Data Ini?")" class="delete">Delete</a></td>
             </tr>
 	';
 }

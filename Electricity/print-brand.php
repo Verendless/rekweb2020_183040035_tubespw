@@ -35,7 +35,7 @@ $html = '
 			<td>'. $brand["founded"] .'</td>
 			<td>'. $brand["base"] .'</td>
 			<td>'. $brand["area_served"] .'</td>
-			<td>'. $brand["revenue"] .'</td>
+			<td>$'. $brand["revenue"] .' Billion</td>
 		</tr>
 		';
 	}
